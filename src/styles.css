@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+:root { 
+  /* Core Colors */
+  --color-primary: #1A365D;    
+  --color-secondary: #E53E3E;  
+  --color-accent: #DD6B20;     
+  --color-background: #FFFFFF; 
+
+  /* Neutrals */
+  --color-text: #2D3748;       
+  --color-light-gray: #EDF2F7; 
+
+  /* Status Colors */
+  --color-success: #38A169;   
+  --color-error: #E53E3E;     
+  --color-warning: #D69E2E;   
+  --color-info: #3182CE;      
+
+  /* Spacing */
+  --spacing-sm: 0.75rem;  
+  --spacing-md: 1.5rem;   
+  --spacing-lg: 3rem;     
+
+  /* Typography */
+  --font-family: 'Roboto', system-ui, sans-serif;
+  --font-size-base: 1.125rem;   
+  --font-size-heading: 2.25rem; 
+
+  /* Borders */
+  --border-radius: 8px; 
+  --border-width: 2px;  
+}
