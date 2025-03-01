@@ -4,32 +4,35 @@
       <p>Get started by creating your account</p>
   </div>
 
-  <div class="error-message" id="signupErrorMessage">
-      Please fix the errors below
-  </div>
-
-  <form class="signup-form" id="signupForm">
+  <form class="signup-form" id="signupForm" [formGroup]="signupForm" (ngSubmit)="signupWithEmail()">
+      
+      <div [class.visible]='errorMessage != ""' class="error-message" id="signupErrorMessage">
+        {{errorMessage}}
+      </div>
+    
       <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" required formControlName="email">
       </div>
 
       <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+          <input type="password" id="password" name="password" required formControlName="password">
       </div>
 
       <div class="form-group">
           <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required>
+          <input type="password" id="confirmPassword" name="confirmPassword" required formControlName="confirmPassword">
       </div>
 
       <div class="form-group checkbox">
           <input type="checkbox" id="terms" name="terms" required>
           <label for="terms">I agree to the Terms of Service</label>
       </div>
+          
+      <button *ngIf="!isLoading; else spinnerBlock" type="submit">Sign Up</button>
+      <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
 
-      <button type="submit">Sign Up</button>
   </form>
 
   <div class="links">
