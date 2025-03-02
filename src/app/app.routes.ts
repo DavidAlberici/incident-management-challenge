@@ -4,6 +4,8 @@ import { SignupComponent } from './authentication/signup/signup.component';
 import { AuthenticationGuard } from './authentication/guards/authentication.guard';
 import { UserAreaHomeComponent } from './user-area/user-area-home/user-area-home.component';
 import { IncidenceCreatorComponent } from './user-area/incidence-creator/incidence-creator.component';
+import { IncidenceEditorWrapperComponent } from './user-area/incidence-editor/incidence-editor-wrapper/incidence-editor-wrapper.component';
+import { IncidenceResolver } from './user-area/incidence-editor/resolver/incidence.resolver';
 
 export const routes: Routes = [
    { path: '', component: SigninComponent },
@@ -14,7 +16,13 @@ export const routes: Routes = [
       canActivate: [AuthenticationGuard],
       children: [
           { path: '', component: UserAreaHomeComponent },
-          { path: 'create-incidence', component: IncidenceCreatorComponent }
+          { path: 'create-incidence', component: IncidenceCreatorComponent },
+          { path: 'edit-incidence/:incidence-url', 
+            component: IncidenceEditorWrapperComponent,
+            resolve: {
+                    incidence: IncidenceResolver
+                } 
+            }
       ],
     },
 ];

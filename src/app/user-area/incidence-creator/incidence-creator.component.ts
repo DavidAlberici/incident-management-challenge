@@ -40,7 +40,7 @@ export class IncidenceCreatorComponent {
     let created: boolean = await this.createIncidence();
     if (created) {
       this.notificationDialogService.notifySuccess("The incidence was created successfully!")
-      this.navigateToUserHome();
+      this.navigateToUserHome(); //TODO navigate to incidence reading page
     }
     this.isLoading = false;
   }
@@ -71,10 +71,17 @@ export class IncidenceCreatorComponent {
       description: this.incidenceForm.value.description,
       status: this.incidenceForm.value.status,
       priority: this.incidenceForm.value.priority,
-    }).then((documentReference: DocumentReference) => {
-      console.log(documentReference)
+      url: this.createIncidenceUrl(this.incidenceForm.value.title)
     });
     return true;
   }
 
+  private createIncidenceUrl(title: string): string {
+    return title
+      .trim() // Trim leading and trailing whitespace
+      .replace(/\s+/g, ' ') // Replace multiple spaces with a single space
+      .replace(/[^a-zA-Z0-9\s]/g, '') // Remove any non-alphanumeric characters
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .toLowerCase(); // Optional: Convert to lowercase (if desired)
+  }
 }

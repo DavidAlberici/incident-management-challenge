@@ -1,0 +1,43 @@
+<div class="incidence-editor-container">
+  <h1>Edit Incidence</h1>
+  <form class="incidence-form" [formGroup]="incidenceForm" (ngSubmit)="submitIncidence()">
+        
+    <div [class.visible]='errorMessage != ""' class="error-message">
+      {{errorMessage}}
+    </div>
+  
+    <div class="form-group readonly">
+        <label for="title">Title</label>
+        <input readonly type="text" name="title" required formControlName="title">
+    </div>
+  
+    <div class="form-group readonly">
+      <label for="url">Url</label>
+      <input readonly type="text" name="url" required formControlName="url">
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" required formControlName="description">
+    </div>
+  
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select name="status" required formControlName="status">
+        <option [value]="status" *ngFor="let status of statusList">{{status}}</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select name="priority" required formControlName="priority">
+        <option [value]="priority" *ngFor="let priority of priorityList">{{priority}}</option>
+      </select>
+    </div>
+        
+    <button *ngIf="!isLoading; else spinnerBlock" type="submit">Create</button>
+    <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
+  
+  </form>
+
+</div>
