@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NotificationDialogService } from '../../notification-dialog/services/notification-dialog.service';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, DocumentReference } from '@firebase/firestore';
+import { priorityList, statusList } from '../../model/incidence';
 
 @Component({
   selector: 'app-incidence-creator',
@@ -16,8 +17,8 @@ export class IncidenceCreatorComponent {
   public errorMessage: string = "";
   public incidenceForm: FormGroup;
   public isLoading: boolean = false;
-  public statusList: string[] = ["Open", "In Progress", "Solved"]
-  public priorityList: string[] = ["Low", "Medium", "High"]
+  public statusList: string[] = statusList
+  public priorityList: string[] = priorityList
   private router = inject(Router)
   private notificationDialogService: NotificationDialogService = inject(NotificationDialogService)
   private firestore: Firestore = inject(Firestore);

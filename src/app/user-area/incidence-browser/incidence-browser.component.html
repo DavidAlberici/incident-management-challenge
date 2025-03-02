@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Browse Incidences</h1>
+  <div class="filters">
+    <div class="filter-group">
+      <label for="status-filter">Status</label>
+      <select id="status-filter" class="filter-select">
+        <option [value]="status" *ngFor="let status of statusList">{{status}}</option>
+        <option value="Any">Any</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="priority-filter">Priority</label>
+      <select id="priority-filter" class="filter-select">
+        <option [value]="priority" *ngFor="let priority of priorityList">{{priority}}</option>
+        <option value="Any">Any</option>
+      </select>
+    </div>
+    <button class="apply-filters-button">Apply Filters</button>
+  </div>
+  <table class="incidences-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let incidence of incidenceList">
+        <td>{{incidence.title}}</td>
+        <td class="description-cell">{{incidence.description}}</td>
+        <td>{{incidence.status}}</td>
+        <td>{{incidence.priority}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -10,3 +10,6 @@ export class Incidence {
 
   }
 }
+
+export let statusList: string[] = ["Open", "In Progress", "Solved"]
+export let priorityList: string[] = ["Low", "Medium", "High"]

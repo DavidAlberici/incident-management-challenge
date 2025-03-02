@@ -6,6 +6,7 @@ import { UserAreaHomeComponent } from './user-area/user-area-home/user-area-home
 import { IncidenceCreatorComponent } from './user-area/incidence-creator/incidence-creator.component';
 import { IncidenceEditorWrapperComponent } from './user-area/incidence-editor/incidence-editor-wrapper/incidence-editor-wrapper.component';
 import { IncidenceResolver } from './user-area/incidence-editor/resolver/incidence.resolver';
+import { IncidenceBrowserComponent } from './user-area/incidence-browser/incidence-browser.component';
 
 export const routes: Routes = [
    { path: '', component: SigninComponent },
@@ -20,9 +21,10 @@ export const routes: Routes = [
           { path: 'edit-incidence/:incidence-url', 
             component: IncidenceEditorWrapperComponent,
             resolve: {
-                    incidence: IncidenceResolver
-                } 
-            }
+              incidence: IncidenceResolver
+            } 
+          },
+          { path: 'browse-incidences', component: IncidenceBrowserComponent },
       ],
     },
 ];
