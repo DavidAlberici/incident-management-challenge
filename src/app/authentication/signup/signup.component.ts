@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +14,7 @@ export class SignupComponent {
   public errorMessage: string = "";
   public signupForm: FormGroup;
   public isLoading: boolean = false;
-  private auth = inject(Auth);
+  private authService = inject(AuthenticationService);
 
   constructor(private fb: FormBuilder) {
     this.signupForm = this.fb.group({
@@ -31,16 +31,8 @@ export class SignupComponent {
       this.isLoading = false;
       return;
     }
-
-    try {
-      await createUserWithEmailAndPassword(
-        this.auth, this.signupForm.value.email, this.signupForm.value.password);
-    } catch (error) {
-      this.errorMessage = (error as any)?.message ?? error ?? "Error"
-      console.error('Error during email signup:', error);
-    } finally {
-      this.isLoading = false;
-    }
+    this.authService.signUpWithEmail(this.signupForm.value.email, this.signupForm.value.password)
+    this.isLoading = false;
   }
 
   private isFormValid(): boolean {
