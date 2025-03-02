@@ -1,0 +1,119 @@
+/* Overlay: Covers the entire screen */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 10; /* Behind the floating box */
+}
+
+.floating-box {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  padding: var(--spacing-md); /* 1.5rem padding */
+
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--border-radius);
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+
+  z-index: 20; /* Above the overlay */
+}
+
+/* Status Variants */
+.floating-box.success {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-light-gray); /* Light text for contrast */
+}
+
+.floating-box.error {
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+  color: var(--color-light-gray);
+}
+
+.floating-box.warning {
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-text); /* Dark text for readability */
+}
+
+.floating-box.info {
+  background-color: var(--color-info);
+  border-color: var(--color-info);
+  color: var(--color-light-gray);
+}
+
+/* Base Close Button */
+.close-btn {
+  display: block;
+  width: 100%;
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  text-align: center;
+
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* Status-Specific Button Styles */
+.floating-box.success .close-btn {
+  background-color: var(--color-light-gray);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.floating-box.error .close-btn {
+  background-color: var(--color-light-gray);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.floating-box.warning .close-btn {
+  background-color: var(--color-light-gray);
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.floating-box.info .close-btn {
+  background-color: var(--color-light-gray);
+  border-color: var(--color-info);
+  color: var(--color-info);
+}
+
+/* Hover Effects */
+.floating-box.success .close-btn:hover {
+  background-color: var(--color-success);
+  color: var(--color-light-gray);
+}
+
+.floating-box.error .close-btn:hover {
+  background-color: var(--color-error);
+  color: var(--color-light-gray);
+}
+
+.floating-box.warning .close-btn:hover {
+  background-color: var(--color-warning);
+  color: var(--color-text);
+}
+
+.floating-box.info .close-btn:hover {
+  background-color: var(--color-info);
+  color: var(--color-light-gray);
+}

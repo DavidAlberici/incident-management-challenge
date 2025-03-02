@@ -8,3 +8,16 @@
 </header>
 <router-outlet />
 <footer>Contact: +34 xxx xxx xxx</footer>
+
+<div *ngIf="notificationMessage != undefined">
+  <div class="overlay"></div>
+  <div 
+    class="floating-box" 
+    [class.error]='notificationType == "error"'
+    [class.warning]='notificationType == "warning"'
+    [class.success]='notificationType == "success"'
+    [class.info]='notificationType == "info"'>
+    {{notificationMessage}}
+    <button class="close-btn" (click)="closeNotificationDialog()">OK</button>
+  </div>
+</div>
