@@ -11,13 +11,28 @@ export class NotificationDialogService {
   notificationMessage = this.notificationMessageSource.asObservable();
   notificationType = this.notificationTypeSource.asObservable();
 
-  public showNotification(message: string | undefined, type: string | undefined) {
-    this.notificationMessageSource.next(message)
-    this.notificationTypeSource.next(type)
+  public notifySuccess(message: string) {
+    this.notify(message, "success")
+  }
+
+  public notifyError(message: string) {
+    this.notify(message, "error")
+  }
+
+  public notifyWarning(message: string) {
+    this.notify(message, "warning")
+  }
+
+  public notifyInfo(message: string) {
+    this.notify(message, "info")
   }
 
   public clearNotification() {
-    this.notificationMessageSource.next(undefined)
-    this.notificationTypeSource.next(undefined)
+    this.notify(undefined, undefined)
+  }
+
+  private notify(message: string | undefined, type: string | undefined) {
+    this.notificationMessageSource.next(message)
+    this.notificationTypeSource.next(type)
   }
 }
