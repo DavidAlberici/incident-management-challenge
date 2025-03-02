@@ -3,6 +3,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationDialogService } from '../../notification-dialog/services/notification-dialog.service';
+import { Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, DocumentReference } from '@firebase/firestore';
 
 @Component({
   selector: 'app-incidence-creator',
@@ -16,6 +18,7 @@ export class IncidenceCreatorComponent {
   public isLoading: boolean = false;
   private router = inject(Router)
   private notificationDialogService: NotificationDialogService = inject(NotificationDialogService)
+  private firestore: Firestore = inject(Firestore);
 
   constructor(private fb: FormBuilder) {
     this.incidenceForm = this.fb.group({
@@ -32,11 +35,7 @@ export class IncidenceCreatorComponent {
       this.isLoading = false;
       return;
     }
-    let created: boolean = true //todo add creator service
-    console.log(this.incidenceForm.value.title + " " + 
-      this.incidenceForm.value.description + " " +
-      this.incidenceForm.value.status + " " + 
-      this.incidenceForm.value.priority + " ")
+    let created: boolean = await this.createIncidence();
     if (created) {
       this.notificationDialogService.notifySuccess("The incidence was created successfully!")
       this.navigateToUserHome();
@@ -61,6 +60,19 @@ export class IncidenceCreatorComponent {
       addToErrorMessage("You must select a priority");
     }
     return this.errorMessage == "";
+  }
+
+  private async createIncidence(): Promise<boolean> {
+    const incidenceCollection = collection(this.firestore, 'incidence');
+    await addDoc(incidenceCollection, {
+      title: this.incidenceForm.value.title,
+      description: this.incidenceForm.value.description,
+      status: this.incidenceForm.value.status,
+      priority: this.incidenceForm.value.priority,
+    }).then((documentReference: DocumentReference) => {
+      console.log(documentReference)
+    });
+    return true;
   }
 
 }
