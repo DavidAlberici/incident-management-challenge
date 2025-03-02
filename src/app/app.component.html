@@ -1,13 +1,6 @@
-<header>
-  <div class="left">
-    <a routerLink="/">Inicio</a>
-  </div>
-  <div class="right">
-    <button (click)="signOut()">Cerrar sesión</button>
-  </div>
-</header>
+<app-header></app-header>
 <router-outlet />
-<footer>Contact: +34 xxx xxx xxx</footer>
+<app-footer></app-footer>
 
 <div *ngIf="notificationMessage != undefined">
   <div class="overlay"></div>

@@ -1,0 +1,28 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-light-gray);
+  border-bottom: var(--border-width) solid var(--color-light-gray);
+  font-family: var(--font-family);
+}
+
+.solardrone-logo {
+  height: 40px; /* Adjust as needed */
+}
+
+button {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-accent);
+}
