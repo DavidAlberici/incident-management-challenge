@@ -7,7 +7,6 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, NgIf],
-  providers: [NotificationDialogService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

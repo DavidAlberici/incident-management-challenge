@@ -11,8 +11,6 @@ export class NotificationDialogService {
   notificationMessage = this.notificationMessageSource.asObservable();
   notificationType = this.notificationTypeSource.asObservable();
 
-  constructor() { }
-
   public showNotification(message: string | undefined, type: string | undefined) {
     this.notificationMessageSource.next(message)
     this.notificationTypeSource.next(type)
