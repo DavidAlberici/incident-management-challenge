@@ -1,3 +1,18 @@
-<h1>Home</h1>
-<p>Welcome back!</p>
-<a routerLink="/user-area/create-incidence">Create new incidence</a>
+<div class="container">
+  <h1>User Area</h1>
+  <p>Welcome back!</p>
+  <div class="boxes">
+    <a routerLink="/user-area/create-incidence" class="box">
+      <img src="new-incidence-icon.svg" alt="Create new incidence icon">
+      <h2>Create new incidence</h2>
+    </a>
+    <a routerLink="/" class="box">
+      <img src="search-incidences-icon.svg" alt="Browse incidences icon">
+      <h2>Browse incidences</h2>
+    </a>
+    <a routerLink="/" class="box">
+      <img src="dashboard-icon.svg" alt="dashboard icon">
+      <h2>See all metrics</h2>
+    </a>
+  </div>
+</div>
