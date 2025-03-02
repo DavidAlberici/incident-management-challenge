@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { addDoc, collection, DocumentReference } from '@firebase/firestore';
 
 @Component({
   selector: 'app-incidence-creator',
-  imports: [ReactiveFormsModule, NgIf],
+  imports: [ReactiveFormsModule, NgIf, NgForOf],
   templateUrl: './incidence-creator.component.html',
   styleUrl: './incidence-creator.component.css'
 })
@@ -16,6 +16,8 @@ export class IncidenceCreatorComponent {
   public errorMessage: string = "";
   public incidenceForm: FormGroup;
   public isLoading: boolean = false;
+  public statusList: string[] = ["Open", "In Progress", "Solved"]
+  public priorityList: string[] = ["Low", "Medium", "High"]
   private router = inject(Router)
   private notificationDialogService: NotificationDialogService = inject(NotificationDialogService)
   private firestore: Firestore = inject(Firestore);
