@@ -1,0 +1,42 @@
+<div class="incidence-creator-container">
+  <h1>Create new Incidence</h1>
+  <form class="incidence-form" [formGroup]="incidenceForm" (ngSubmit)="submitIncidence()">
+        
+    <div [class.visible]='errorMessage != ""' class="error-message">
+      {{errorMessage}}
+    </div>
+  
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" required formControlName="title">
+    </div>
+  
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" name="description" required formControlName="description">
+    </div>
+  
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select name="status" required formControlName="status">
+        <option value="One">One</option>
+        <option value="Two">Two</option>
+        <option value="Three">Three</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select name="priority" required formControlName="priority">
+        <option value="One">One</option>
+        <option value="Two">Two</option>
+        <option value="Three">Three</option>
+      </select>
+    </div>
+        
+    <button *ngIf="!isLoading; else spinnerBlock" type="submit">Create</button>
+    <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
+  
+  </form>
+
+</div>
