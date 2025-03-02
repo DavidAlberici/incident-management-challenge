@@ -5,7 +5,8 @@ export class Incidence {
     public url: string,
     public description: string,
     public status: string,
-    public priority: string
+    public priority: string,
+    public createdDate: string
   ) {
 
   }

@@ -10,11 +10,6 @@
         <label for="title">Title</label>
         <input readonly type="text" name="title" required formControlName="title">
     </div>
-  
-    <div class="form-group readonly">
-      <label for="url">Url</label>
-      <input readonly type="text" name="url" required formControlName="url">
-    </div>
 
     <div class="form-group">
         <label for="description">Description</label>
@@ -33,6 +28,16 @@
       <select name="priority" required formControlName="priority">
         <option [value]="priority" *ngFor="let priority of priorityList">{{priority}}</option>
       </select>
+    </div>
+  
+    <div class="form-group readonly">
+      <label for="url">Url</label>
+      <input readonly type="text" name="url" required formControlName="url">
+    </div>
+  
+    <div class="form-group readonly">
+      <label for="created-date">Created Date</label>
+      <input readonly type="text" name="created-date" required formControlName="createdDate">
     </div>
         
     <button *ngIf="!isLoading; else spinnerBlock" type="submit">Create</button>

@@ -72,7 +72,8 @@ export class IncidenceCreatorComponent {
       description: this.incidenceForm.value.description,
       status: this.incidenceForm.value.status,
       priority: this.incidenceForm.value.priority,
-      url: this.createIncidenceUrl(this.incidenceForm.value.title)
+      url: this.createIncidenceUrl(this.incidenceForm.value.title),
+      createdDate: new Date().toISOString(),
     });
     return true;
   }

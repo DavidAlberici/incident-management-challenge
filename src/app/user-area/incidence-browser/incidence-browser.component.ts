@@ -20,7 +20,8 @@ export class IncidenceBrowserComponent {
       'incidence-1', // url
       'This is a sample description for Incidence 1. It can be quite long and should wrap text properly.', // description
       'Open', // status
-      'High' // priority
+      'High', // priority
+      new Date().toISOString()
     ),
     new Incidence(
       '2', // id
@@ -28,7 +29,8 @@ export class IncidenceBrowserComponent {
       'incidence-2', // url
       'This is another sample description for Incidence 2. It should also wrap text properly.', // description
       'Closed', // status
-      'Medium' // priority
+      'Medium', // priority
+      new Date().toISOString()
     ),
     new Incidence(
       '3', // id
@@ -36,7 +38,8 @@ export class IncidenceBrowserComponent {
       'incidence-3', // url
       'Yet another sample description for Incidence 3. Text wrapping is important here too.', // description
       'In Progress', // status
-      'Low' // priority
+      'Low', // priority
+      new Date().toISOString()
     ),
   ];
 }

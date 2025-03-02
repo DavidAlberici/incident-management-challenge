@@ -31,7 +31,8 @@ export class IncidenceEditorComponent implements OnInit {
       url: new FormControl(''),
       description: new FormControl(''),
       status: new FormControl('', Validators.required),
-      priority: new FormControl('', Validators.required)
+      priority: new FormControl('', Validators.required),
+      createdDate: new FormControl(''),
     });
   }
 
@@ -42,6 +43,7 @@ export class IncidenceEditorComponent implements OnInit {
     this.incidenceForm.patchValue({
       title: this.incidence.title,
       url: this.incidence.url,
+      createdDate: this.incidence.createdDate,
       description: this.incidence.description,
       status: this.incidence.status,
       priority: this.incidence.priority
