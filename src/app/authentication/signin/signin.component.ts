@@ -57,6 +57,6 @@ export class SigninComponent {
   }
 
   private navigateToUserHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/user-area']);
   }
 }
