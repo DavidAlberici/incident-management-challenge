@@ -1,29 +1,34 @@
 <div class="login-container">
   <div class="login-header">
-      <h1>Sign in</h1>
-      <p>Welcome back! Please sign in to continue</p>
+    <h1>Sign in</h1>
+    <p>Welcome back! Please sign in to continue</p>
   </div>
 
   <div class="error-message" id="errorMessage">
-      Invalid username or password
+    Invalid username or password
   </div>
 
-  <form class="login-form" id="loginForm">
-      <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" required>
+  <form class="signin-form" [formGroup]="signInForm" (ngSubmit)="signInWithEmail()">
+      <div [class.visible]='errorMessage != ""' class="error-message" id="signupErrorMessage">
+        {{errorMessage}}
       </div>
 
       <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required formControlName="email">
       </div>
 
-      <button type="submit">Sign In</button>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required formControlName="password">
+      </div>
+
+      <button *ngIf="!isLoading; else spinnerBlock" type="submit">Sign In</button>
+      <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
   </form>
 
   <div class="links">
-      <a routerLink="/signup" class="forgot-password">Forgot password?</a>
-      <a routerLink="/signup" class="create-account">Create account</a>
+    <a routerLink="/signup" class="forgot-password">Forgot password?</a>
+    <a routerLink="/signup" class="create-account">Create account</a>
   </div>
 </div>

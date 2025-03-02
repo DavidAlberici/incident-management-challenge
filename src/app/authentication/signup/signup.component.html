@@ -4,7 +4,7 @@
       <p>Get started by creating your account</p>
   </div>
 
-  <form class="signup-form" id="signupForm" [formGroup]="signupForm" (ngSubmit)="signupWithEmail()">
+  <form class="signup-form" [formGroup]="signupForm" (ngSubmit)="signUpWithEmail()">
       
       <div [class.visible]='errorMessage != ""' class="error-message" id="signupErrorMessage">
         {{errorMessage}}

@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class SignupComponent {
   public signupForm: FormGroup;
   public isLoading: boolean = false;
   private authService = inject(AuthenticationService);
+  private router = inject(Router)
 
   constructor(private fb: FormBuilder) {
     this.signupForm = this.fb.group({
@@ -25,13 +26,16 @@ export class SignupComponent {
   }
 
 
-  async signupWithEmail(): Promise<void> {
+  async signUpWithEmail(): Promise<void> {
     this.isLoading = true;
     if (!this.isFormValid()) {
       this.isLoading = false;
       return;
     }
-    this.authService.signUpWithEmail(this.signupForm.value.email, this.signupForm.value.password)
+    let signed: boolean = await this.authService.signUpWithEmail(this.signupForm.value.email, this.signupForm.value.password)
+    if (signed) {
+      this.navigateToUserHome();
+    }
     this.isLoading = false;
   }
 
@@ -48,5 +52,9 @@ export class SignupComponent {
       addToErrorMessage("Passwords must match");
     }
     return this.errorMessage == "";
+  }
+
+  private navigateToUserHome() {
+    this.router.navigate(['/home']);
   }
 }

@@ -41,7 +41,7 @@
 }
 
 /* Form Styles */
-.login-form {
+.signin-form {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -75,7 +75,7 @@
 }
 
 /* Button Styles */
-.login-form button {
+.signin-form button {
   background-color: var(--color-primary);
   color: var(--color-background);
   font-size: var(--font-size-base);
@@ -86,8 +86,21 @@
   transition: background-color 0.3s ease;
 }
 
-.login-form button:hover {
+.signin-form button:hover {
   background-color: var(--color-accent);
+}
+
+/* Spinner Styles */
+.spinner {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: var(--spacing-md);
 }
 
 /* Links Styles */
