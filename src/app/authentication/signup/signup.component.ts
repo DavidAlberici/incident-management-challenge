@@ -25,7 +25,6 @@ export class SignupComponent {
     });
   }
 
-
   async signUpWithEmail(): Promise<void> {
     this.isLoading = true;
     if (!this.isFormValid()) {
@@ -33,6 +32,15 @@ export class SignupComponent {
       return;
     }
     let signed: boolean = await this.authService.signUpWithEmail(this.signupForm.value.email, this.signupForm.value.password)
+    if (signed) {
+      this.navigateToUserHome();
+    }
+    this.isLoading = false;
+  }
+
+  async signUpWithGoogle(): Promise<void> {
+    this.isLoading = true;
+    let signed: boolean = await this.authService.signWithGoogle()
     if (signed) {
       this.navigateToUserHome();
     }

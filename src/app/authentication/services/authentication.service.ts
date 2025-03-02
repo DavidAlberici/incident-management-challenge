@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, user } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut, user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { LoggerService } from '../../logger/services/logger.service';
 
@@ -15,7 +15,7 @@ export class AuthenticationService {
     this.user$ = user(this.auth);
   }
 
-  public async signInWithGoogle(): Promise<boolean> {
+  public async signWithGoogle(): Promise<boolean> {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(this.auth, provider);
@@ -48,5 +48,9 @@ export class AuthenticationService {
       this.logger.error('Error during email sign up:' + errorMessage, 'Error during email sign up:' + errorMessage)
       return false;
     }
+  }
+
+  public async signOut() {
+    await signOut(this.auth)
   }
 }

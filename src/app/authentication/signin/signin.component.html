@@ -25,6 +25,11 @@
 
       <button *ngIf="!isLoading; else spinnerBlock" type="submit">Sign In</button>
       <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
+
+      <button type="button" *ngIf="!isLoading" class="google-signup-button" (click)="signInWithGoogle()">
+        <img src="/google-icon.png" alt="Google Icon" class="google-icon" />
+        Google Sign In
+      </button>
   </form>
 
   <div class="links">

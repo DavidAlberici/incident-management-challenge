@@ -24,7 +24,7 @@ export class SigninComponent {
     });
   }
 
-  async signInWithEmail(): Promise<void> {
+  public async signInWithEmail(): Promise<void> {
     this.isLoading = true;
     if (!this.isFormValid()) {
       this.isLoading = false;
@@ -36,6 +36,13 @@ export class SigninComponent {
       this.navigateToUserHome();
     }
     this.isLoading = false;
+  }
+
+  public async signInWithGoogle() {
+    let signed: boolean = await this.authService.signWithGoogle();
+    if (signed) {
+      this.navigateToUserHome();
+    }
   }
 
   private isFormValid(): boolean {

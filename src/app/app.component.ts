@@ -1,8 +1,9 @@
 import { NgIf } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NotificationDialogService } from './notification-dialog/services/notification-dialog.service';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from './authentication/services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,16 @@ export class AppComponent implements OnInit, OnDestroy {
   private notificationMessageSubscription!: Subscription;
   private notificationTypeSubscription!: Subscription;
   private notificationDialogService: NotificationDialogService = inject(NotificationDialogService)
+  private authService: AuthenticationService = inject(AuthenticationService)
+  private router: Router = inject(Router)
 
   public closeNotificationDialog(): void {
     this.notificationDialogService.clearNotification()
+  }
+
+  signOut() {
+    this.authService.signOut();
+    this.router.navigate([""])
   }
   
   ngOnInit() {
