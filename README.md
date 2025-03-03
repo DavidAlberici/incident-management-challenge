@@ -2,6 +2,9 @@
 
 This document is a very brief summary on how to run the app, and how to deploy it. It assumes the app has been already preconfigured. It also assumes the reader has some familiarity with Angular and Firebase. Is not intended to be an exhaustive tutorial on how to generally create and run Angular apps that use Firebase as Backend and Hosting.
 
+## Where is deployed?
+This app is accesible in https://incident-management-challenge.web.app/
+
 ## How to run
 Is a plain angular app. It only uses Client Side Rendering. So running it is straightforward:
 1. Make sure to have npm installed
