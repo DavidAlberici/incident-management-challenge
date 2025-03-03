@@ -1,0 +1,10 @@
+<h2>Comments</h2>
+<div *ngIf="commentList != null; else spinnerBlock" class="comments-section">
+  <div *ngFor="let comment of commentList" class="comment">
+    <div class="comment-header">
+      <span class="comment-date">{{ formatDate(comment.createdDate) }}</span>
+    </div>
+    <div class="comment-content">{{ comment.content }}</div>
+  </div>
+</div>
+<ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>

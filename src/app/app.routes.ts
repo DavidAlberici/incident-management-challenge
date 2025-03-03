@@ -6,9 +6,8 @@ import { UserAreaHomeComponent } from './user-area/user-area-home/user-area-home
 import { IncidenceCreatorComponent } from './user-area/incidence-creator/incidence-creator.component';
 import { IncidenceEditorWrapperComponent } from './user-area/incidence-editor/incidence-editor-wrapper/incidence-editor-wrapper.component';
 import { IncidenceBrowserComponent } from './user-area/incidence-browser/incidence-browser.component';
-import { IncidenceDetailComponent } from './user-area/incidence-detail/incidence-detail.component';
-// import { IncidenceDetailResolver } from './user-area/incidence-detail/resolver/incidence-detail.resolver';
-import { IncidenceListResolver } from './user-area/incidence-editor/resolver/incidence-list.resolver';
+import { IncidenceResolver } from './user-area/incidence-editor/resolver/incidence.resolver';
+import { IncidenceDetailWrapperComponent } from './user-area/incidence-detail/incidence-detail-wrapper/incidence-detail-wrapper.component';
 
 export const routes: Routes = [
    { path: '', component: SigninComponent },
@@ -23,11 +22,16 @@ export const routes: Routes = [
           { path: 'edit-incidence/:incidence-url', 
             component: IncidenceEditorWrapperComponent,
             resolve: {
-              incidence: IncidenceListResolver
+              incidence: IncidenceResolver
             } 
           },
           { path: 'browse-incidences', component: IncidenceBrowserComponent },
-          { path: 'incidence-detail/:incidence-url', component: IncidenceDetailComponent }//, resolve: { incidence: IncidenceDetailResolver} },
+          { path: 'incidence-detail/:incidence-url', 
+            component: IncidenceDetailWrapperComponent, 
+            resolve: { 
+              incidence: IncidenceResolver
+            } 
+          },
       ],
     },
 ];

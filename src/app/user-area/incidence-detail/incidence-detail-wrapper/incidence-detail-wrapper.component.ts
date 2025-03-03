@@ -2,25 +2,28 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Incidence } from '../../../model/incidence';
-import { IncidenceEditorComponent } from '../incidence-editor.component';
+import { IncidenceDetailComponent } from '../incidence-detail.component';
+import { IncidenceComment } from '../../../model/incidence-comment';
+
 
 @Component({
-  selector: 'app-incidence-editor-wrapper',
-  imports: [NgIf, IncidenceEditorComponent],
+  selector: 'app-incidence-detail-wrapper',
+  imports: [NgIf, IncidenceDetailComponent],
   template: `
     <div *ngIf="isLoading">
       <p>Loading...</p>
     </div>
     <div *ngIf="!isLoading && incidence">
-      <app-incidence-editor [incidence]="incidence"></app-incidence-editor>
+      <app-incidence-detail [incidence]="incidence"></app-incidence-detail>
     </div>
     <div *ngIf="!isLoading && !incidence">
       <p>Incidence not found.</p>
     </div>
   `
 })
-export class IncidenceEditorWrapperComponent implements OnInit {
+export class IncidenceDetailWrapperComponent implements OnInit {
   incidence!: Incidence;
+  comments!: IncidenceComment[];
   isLoading = true;
 
   constructor(private route: ActivatedRoute) {}
@@ -28,6 +31,7 @@ export class IncidenceEditorWrapperComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.incidence = data['incidence'];
+      this.comments = data['comments']
       this.isLoading = false;
     });
   }

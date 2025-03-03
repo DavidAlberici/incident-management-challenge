@@ -29,13 +29,5 @@
     </div>
   </div>
 
-  <h2>Comments</h2>
-  <div class="comments-section">
-    <div *ngFor="let comment of comments" class="comment">
-      <div class="comment-header">
-        <span class="comment-date">{{ formatDate(comment.createdDate) }}</span>
-      </div>
-      <div class="comment-content">{{ comment.content }}</div>
-    </div>
-  </div>
+  <app-realtime-comment-list [incidenceId]="incidence.id"></app-realtime-comment-list>
 </div>
