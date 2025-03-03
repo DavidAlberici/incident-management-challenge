@@ -7,7 +7,7 @@ import { Incidence } from '../../../model/incidence';
 @Injectable({
   providedIn: 'root'
 })
-export class IncidenceResolver implements Resolve<any> {
+export class IncidenceListResolver implements Resolve<any> {
   private firestore: Firestore = inject(Firestore);
   private notificationDialogService: NotificationDialogService = inject(NotificationDialogService);
 

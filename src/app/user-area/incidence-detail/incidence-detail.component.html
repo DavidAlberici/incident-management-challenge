@@ -1,0 +1,41 @@
+<div class="incidence-detail-container">
+  <h1>Incidence Detail</h1>
+
+  <!-- Incidence Details Section -->
+  <div class="incidence-detail">
+    <div class="detail-row">
+      <span class="detail-label">Title:</span>
+      <span class="detail-value">{{ incidence.title }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">URL:</span>
+      <span class="detail-value"><a [href]="incidence.url" target="_blank">{{ incidence.url }}</a></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Description:</span>
+      <span class="detail-value">{{ incidence.description }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Status:</span>
+      <span class="detail-value">{{ incidence.status }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Priority:</span>
+      <span class="detail-value">{{ incidence.priority }}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Created Date:</span>
+      <span class="detail-value">{{ formatDate(incidence.createdDate) }}</span>
+    </div>
+  </div>
+
+  <h2>Comments</h2>
+  <div class="comments-section">
+    <div *ngFor="let comment of comments" class="comment">
+      <div class="comment-header">
+        <span class="comment-date">{{ formatDate(comment.createdDate) }}</span>
+      </div>
+      <div class="comment-content">{{ comment.content }}</div>
+    </div>
+  </div>
+</div>
