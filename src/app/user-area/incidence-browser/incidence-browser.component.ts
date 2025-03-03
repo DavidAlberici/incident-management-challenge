@@ -3,10 +3,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Incidence, priorityList, statusList } from '../../model/incidence';
 import { collection, Firestore, getDocs, or, query, QueryCompositeFilterConstraint, QueryFilterConstraint, where } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-incidence-browser',
-  imports: [NgForOf, NgIf, FormsModule],
+  imports: [NgForOf, NgIf, FormsModule, RouterLink],
   templateUrl: './incidence-browser.component.html',
   styleUrl: './incidence-browser.component.css'
 })

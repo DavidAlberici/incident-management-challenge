@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let incidence of incidenceList">
+      <tr *ngFor="let incidence of incidenceList" [routerLink]="`/user-area/incidence-detail/${incidence.url}`">
         <td>{{incidence.title}}</td>
         <td class="description-cell">{{incidence.description}}</td>
         <td>{{incidence.status}}</td>
