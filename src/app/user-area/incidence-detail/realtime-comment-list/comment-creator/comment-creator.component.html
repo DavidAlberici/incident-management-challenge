@@ -1,0 +1,17 @@
+<h2>Add a Comment</h2>
+<form [formGroup]="commentForm" (ngSubmit)="createComment()" class="comment-form">
+  <div class="form-group">
+    <div [class.visible]='errorMessage != ""' class="error-message" id="signupErrorMessage">
+      {{errorMessage}}
+    </div>
+    <textarea
+      id="content"
+      formControlName="content"
+      placeholder="Write your comment here..."
+      class="form-control"
+    ></textarea>
+  </div>
+  <button type="submit" class="submit-button">
+    Submit
+  </button>
+</form>

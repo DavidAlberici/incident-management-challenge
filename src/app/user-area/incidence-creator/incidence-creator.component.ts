@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { NotificationDialogService } from '../../notification-dialog/services/notification-dialog.service';
 import { Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, DocumentReference } from '@firebase/firestore';
+import { addDoc, collection } from '@firebase/firestore';
 import { priorityList, statusList } from '../../model/incidence';
 
 @Component({

@@ -1,14 +1,14 @@
 import { NgForOf, NgIf } from '@angular/common';
 import { Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { IncidenceComment } from '../../../model/incidence-comment';
-import { collection, doc, docSnapshots, Firestore, getDocs, onSnapshot, query, Unsubscribe } from '@angular/fire/firestore';
+import { collection, Firestore, onSnapshot, query, Unsubscribe } from '@angular/fire/firestore';
 import { LoggerService } from '../../../logger/services/logger.service';
 import { NotificationDialogService } from '../../../notification-dialog/services/notification-dialog.service';
-import { Subscription } from 'rxjs';
+import { CommentCreatorComponent } from './comment-creator/comment-creator.component';
 
 @Component({
   selector: 'app-realtime-comment-list',
-  imports: [NgForOf, NgIf],
+  imports: [NgForOf, NgIf, CommentCreatorComponent],
   templateUrl: './realtime-comment-list.component.html',
   styleUrl: './realtime-comment-list.component.css'
 })
