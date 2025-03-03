@@ -1,59 +1,15 @@
-# IncidentManagementChallenge
+# Incident Management Web App Challenge
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+This document is a very brief summary on how to run the app, and how to deploy it. It assumes the app has been already preconfigured. It also assumes the reader has some familiarity with Angular and Firebase. Is not intended to be an exhaustive tutorial on how to generally create and run Angular apps that use Firebase as Backend and Hosting.
 
-## Development server
+## How to run
+Is a plain angular app. It only uses Client Side Rendering. So running it is straightforward:
+1. Make sure to have npm installed
+2. Run "npm install" inside the root folder of the project (the one containing "src" directory)
+3. Run "npm start" to run locally
+4. Run "ng build" to build the project. As you can see in angular.json file, output will go to "dist" folder, which is the default behaviour.
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## How to deploy
+1. Make sure to have Firebase CLI installed. You can install it with npm using `npm install -g firebase-tools`
+1. Log in into your firebase account with command `firebase login`
+1. To deploy your local copy, run `ng build`, and then `firebase deploy --only hosting`. Both firebase.json and angular.json are configured to (a) compile the app code into dist folder, and (b) deploy the code in that dist folder
