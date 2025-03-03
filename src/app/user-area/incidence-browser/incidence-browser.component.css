@@ -101,3 +101,11 @@ label {
   word-wrap: break-word;
   max-width: 400px; /* Adjust as needed */
 }
+
+/* Spinner */
+.spinner {
+  font-size: var(--font-size-heading);
+  color: var(--color-primary);
+  text-align: center;
+  padding: 3rem
+}

@@ -3,21 +3,21 @@
   <div class="filters">
     <div class="filter-group">
       <label for="status-filter">Status</label>
-      <select id="status-filter" class="filter-select">
+      <select id="status-filter" class="filter-select" [(ngModel)]="selectedStatus">
         <option [value]="status" *ngFor="let status of statusList">{{status}}</option>
         <option value="Any">Any</option>
       </select>
     </div>
     <div class="filter-group">
       <label for="priority-filter">Priority</label>
-      <select id="priority-filter" class="filter-select">
+      <select id="priority-filter" class="filter-select" [(ngModel)]="selectedPriority">
         <option [value]="priority" *ngFor="let priority of priorityList">{{priority}}</option>
         <option value="Any">Any</option>
       </select>
     </div>
-    <button class="apply-filters-button">Apply Filters</button>
+    <button class="apply-filters-button" (click)="applyFilters()">Apply Filters</button>
   </div>
-  <table class="incidences-table">
+  <table *ngIf="!isLoading; else spinnerBlock" class="incidences-table">
     <thead>
       <tr>
         <th>Title</th>
@@ -35,4 +35,5 @@
       </tr>
     </tbody>
   </table>
+  <ng-template #spinnerBlock><p class="spinner">Loading...</p></ng-template>
 </div>
